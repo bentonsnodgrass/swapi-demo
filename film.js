@@ -1,9 +1,9 @@
-let nameH1;
+// let nameH1;
 let title;
 let releaseDate;
 let episodeSpan;
-let characterDiv;
-let planetDiv;
+// let characterDiv;
+// let planetDiv;
 const baseUrl = `https://swapi2.azurewebsites.net/api`;
 
 // Runs on page load
