@@ -19,6 +19,7 @@ async function getPlanet(id) {
   let planet;
   try {
     planet = await fetchPlanet(id)
+    planet.characters = await fetchCharacters(planet)
     planet.films = await fetchFilms(planet)
   }
   catch (ex) {
@@ -50,7 +51,7 @@ async function fetchFilms(planet) {
 const renderPlanet = planet => {
   document.title = `SWAPI - ${planet?.name}`;  // Just to make the browser tab say planet name
   nameH1.textContent = planet?.name;
-  const charactersLis = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}"</li>`)
+  const charactersLis = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
   charactersUl.innerHTML = charactersLis.join("");
   const filmsLis = planet?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
   filmsUl.innerHTML = filmsLis.join("");
