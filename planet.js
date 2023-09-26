@@ -1,12 +1,11 @@
 let nameH1;
-let filmsDiv;
-let planetDiv;
-let charactersDiv;
 const baseUrl = `https://swapi2.azurewebsites.net/api`;
 
 // Runs on page load
 addEventListener('DOMContentLoaded', () => {
   nameH1 = document.querySelector('h1#name');
+  diameterSpan = document.querySelector('span#diameter');
+  climateSpan = document.querySelector('span#climate');
   charactersUl = document.querySelector('#characters>ul');
   filmsUl = document.querySelector('#films>ul');
 
@@ -51,6 +50,8 @@ async function fetchFilms(planet) {
 const renderPlanet = planet => {
   document.title = `SWAPI - ${planet?.name}`;  // Just to make the browser tab say planet name
   nameH1.textContent = planet?.name;
+  climateSpan.textContent = planet?.climate;
+  diamaterSpan.textContent = planet?.diameter;
   const charactersLis = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
   charactersUl.innerHTML = charactersLis.join("");
   const filmsLis = planet?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
