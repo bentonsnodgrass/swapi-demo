@@ -2,6 +2,7 @@
 let title;
 let releaseDate;
 let episodeSpan;
+let openingScrawl;
 // let characterDiv;
 // let planetDiv;
 const baseUrl = `https://swapi2.azurewebsites.net/api`;
@@ -14,6 +15,7 @@ addEventListener('DOMContentLoaded', () => {
   episodeSpan = document.querySelector('span#episode_id');
   characterUl = document.querySelector('#characters>ul');
   planetsUl = document.querySelector('#planets>ul');
+  openingCrawl = document.querySelector('#opening_crawl');
   const sp = new URLSearchParams(window.location.search)
   const id = sp.get('id')
   getFilm(id)
@@ -63,4 +65,5 @@ const renderFilm = film => {
   planetsUl.innerHTML = planetLis.join("");
   const characterLis = film?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
   characterUl.innerHTML = characterLis.join("");
+  openingCrawl.textContent = film?.opening_crawl;
 }
