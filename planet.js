@@ -51,7 +51,7 @@ const renderPlanet = planet => {
   document.title = `SWAPI - ${planet?.name}`;  // Just to make the browser tab say planet name
   nameH1.textContent = planet?.name;
   climateSpan.textContent = planet?.climate;
-  diamaterSpan.textContent = planet?.diameter;
+  diameterSpan.textContent = planet?.diameter;
   const charactersLis = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
   charactersUl.innerHTML = charactersLis.join("");
   const filmsLis = planet?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
